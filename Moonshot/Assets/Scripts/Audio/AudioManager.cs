@@ -14,6 +14,24 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        // Initialize audio sources
+        foreach (Sound s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.loop = s.loop;
+        }
+
+        // If slideres exist, add onValueChange listeners
+        if (masterVolumeSlider)
+            masterVolumeSlider.onValueChanged.AddListener(delegate { MasterVolumeChange(); });
+       
+        if (masterVolumeSlider)
+            masterVolumeSlider.onValueChanged.AddListener(delegate { MusicVolumeChange(); });
+        
+        if (effectsVolumeSlider)
+            effectsVolumeSlider.onValueChanged.AddListener(delegate { EffectsVolumeChange(); });
+
         // Set audio slider defaults or load up saved settings from PlayerPrefs
         if (!PlayerPrefs.HasKey("MasterVolume"))
             masterVolumeSlider.value = 1f;
@@ -30,15 +48,6 @@ public class AudioManager : MonoBehaviour
         else
             effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
 
-        CheckVolumeChanges();
-
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.loop = s.loop;
-        }
     }
 
     // Plays the sound source itself. Repeated calls will reset the sound being played.
@@ -65,17 +74,7 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
     }
 
-    private void CheckVolumeChanges()
-    {
-        if (masterVolumeSlider)
-            masterVolumeSlider.onValueChanged.AddListener(delegate { MasterVolumeChange(); });
-        if (masterVolumeSlider)
-            masterVolumeSlider.onValueChanged.AddListener(delegate { MusicVolumeChange(); });
-        if (effectsVolumeSlider)
-            effectsVolumeSlider.onValueChanged.AddListener(delegate { EffectsVolumeChange(); });
-    }
-
-    // onValueChanged functions only (NULL safe)
+    // onValueChanged functions (NULL safe)
     private void MasterVolumeChange()
     {
         PlayerPrefs.SetFloat("MasterVolume", masterVolumeSlider.value);
@@ -92,7 +91,7 @@ public class AudioManager : MonoBehaviour
 
     private void MusicVolumeChange()
     {
-        PlayerPrefs.SetFloat("MusicVolume", masterVolumeSlider.value);
+        PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
 
         foreach (Sound s in sounds)
         {
@@ -103,7 +102,7 @@ public class AudioManager : MonoBehaviour
 
     private void EffectsVolumeChange()
     {
-        PlayerPrefs.SetFloat("EffectsVolume", masterVolumeSlider.value);
+        PlayerPrefs.SetFloat("EffectsVolume", effectsVolumeSlider.value);
 
         foreach (Sound s in sounds)
         {

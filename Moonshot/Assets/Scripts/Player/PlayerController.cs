@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : StateMachine
 {
+    public bool GotTimeStar { get; set; }
 
     void Start()
     {
@@ -14,4 +15,14 @@ public class PlayerController : StateMachine
     {
         this.CurrentState.Update();
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "TimeStar")
+        {
+            GotTimeStar = true;
+            Destroy(col.gameObject);
+        }
+    }
 }
+    

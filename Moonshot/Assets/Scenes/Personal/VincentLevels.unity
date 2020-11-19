@@ -1020,7 +1020,6 @@ GameObject:
   - component: {fileID: 91013937}
   - component: {fileID: 91013936}
   - component: {fileID: 91013935}
-  - component: {fileID: 91013934}
   m_Layer: 0
   m_Name: PlayerCubeForTestingToRemove
   m_TagString: Player
@@ -1028,18 +1027,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &91013934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91013933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd316395a1861c4fa4c7e2655e4095d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &91013935
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7254,8 +7241,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1224829370}
-  - component: {fileID: 1224829372}
   - component: {fileID: 1224829371}
+  - component: {fileID: 1224829372}
   m_Layer: 0
   m_Name: CubeTrigger
   m_TagString: Untagged
@@ -7299,7 +7286,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1224829369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8369d4e1c9b60f945ac609362ec1514b, type: 3}
+  m_Script: {fileID: 11500000, guid: d69c3bf317fb28d42b641a3bf803625f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1255737995
@@ -11539,12 +11526,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1760996166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1304387f2fd690f4886ed9e9ceaf71a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fc784659906fbd419f7af3afdbbcb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1600093679}
   endOfPathInstruction: 1
-  speed: 1
+  speed: 2
 --- !u!1 &1824161697
 GameObject:
   m_ObjectHideFlags: 0

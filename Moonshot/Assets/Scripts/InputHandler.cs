@@ -66,14 +66,12 @@ public class InputHandler : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
             {
-                // TO-DO:
-                // Transition to Move/Run State. 
+                playerController.Move();
             }
 
             if (Input.GetButtonDown("Jump")) 
-            { 
-                // TO-DO:
-                // Transition to Jump State
+            {
+                playerController.Jump();
             }
 
             // MAIN MENU

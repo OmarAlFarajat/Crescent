@@ -30,7 +30,7 @@ public class MoonGravity : MonoBehaviour
         Ray temp_ray = new Ray(transform.position, -transform.up * RAYDISTANCE);
 
         // Gets the normal of the surface below the character, and also creates a target direction for gravity
-        if (Physics.Raycast(temp_ray, out temp_hit) && temp_hit.transform.CompareTag("Moon"))
+        if (Physics.Raycast(temp_ray, out temp_hit) && (temp_hit.transform.CompareTag("Moon") || temp_hit.transform.CompareTag("Platform")))
         {
             normal = temp_hit.normal;
             targetDirection = (transform.position - temp_hit.point).normalized;
@@ -45,38 +45,5 @@ public class MoonGravity : MonoBehaviour
         // Having a rigid body and 
         if(rigidBody)
             rigidBody.AddForce(targetDirection * GRAVITY);
-    }
-
-    private void Update()
-    {
-
-        if (transform.name.Equals("Player"))
-        {
-            // Input check for testing
-            if(Input.GetAxisRaw("Vertical") > 0)
-            {
-                rigidBody.AddForce(0.1f * transform.forward.normalized, ForceMode.Impulse);
-            }
-
-            if (Input.GetAxisRaw("Vertical") < 0)
-            {
-                rigidBody.AddForce(0.1f * -transform.forward.normalized, ForceMode.Impulse);
-            }
-
-            if (Input.GetAxisRaw("Horizontal") < 0)
-            {
-                rigidBody.AddForce(0.1f * -transform.right, ForceMode.Impulse);
-            }
-
-            if (Input.GetAxisRaw("Horizontal") > 0)
-            {
-                rigidBody.AddForce(0.1f * transform.right, ForceMode.Impulse);
-            }
-
-            if (Input.GetKeyDown("space"))
-            {
-                rigidBody.AddForce(20f * transform.up.normalized, ForceMode.Impulse);
-            }
-        }
     }
 }

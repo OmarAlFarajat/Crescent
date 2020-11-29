@@ -10,9 +10,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 4f;
     [SerializeField]
-    private float jumpForce = 6f;
+    private float runMultiplier = 3f;
+    [SerializeField]
+    private float jumpForce = 12f;
 
     public bool isGrounded = false;
+    public bool isMoving = false;
+    public bool isRunning = false;
+    public bool isAttacking = false;
+
 
     [SerializeField]
     private Transform currentMovingPlatform;
@@ -31,16 +37,46 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        rigidBody.MovePosition(rigidBody.position + transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime);
+        if (!isAttacking)
+        {
+            Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+
+            if (isRunning)
+                rigidBody.MovePosition(rigidBody.position + transform.TransformDirection(moveDir) * moveSpeed * runMultiplier * Time.deltaTime);
+            else
+                rigidBody.MovePosition(rigidBody.position + transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime);
+        }
     }
     public void Jump()
     {
-        if (isGrounded)
+        if (!isAttacking)
         {
-            rigidBody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
+            if (isGrounded)
+            {
+                rigidBody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+                isGrounded = false;
+                animator.SetBool("isGrounded", false);
+            }
+        }        
+    }
+
+    public void Attack()
+    {
+        if (!isAttacking)
+        {
+            rigidBody.AddForce(transform.forward * jumpForce*0.5f, ForceMode.Impulse);
+            isAttacking = true;
+            animator.SetBool("isAttacking", true);
+            StartCoroutine("Wait");
         }
+    }
+    public IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+        isAttacking = false;
+        animator.SetBool("isAttacking", false);
+        rigidBody.isKinematic = true;
+        rigidBody.isKinematic = false;
     }
 
     private void MouseLook()
@@ -67,13 +103,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.transform.CompareTag("Moon"))
         {
-            //animator.SetBool("isGrounded", true);
+            animator.SetBool("isGrounded", true);
             isGrounded = true;
         }
 
         if (collision.transform.CompareTag("Platform"))
         {
-            //animator.SetBool("isGrounded", true);
+            animator.SetBool("isGrounded", true);
             isGrounded = true;
             currentMovingPlatform = collision.gameObject.transform;
             transform.SetParent(currentMovingPlatform);

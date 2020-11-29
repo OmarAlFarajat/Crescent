@@ -27,7 +27,7 @@ public class MoonGravity : MonoBehaviour
     {
         // Set up ray to check the surface below player
         RaycastHit temp_hit;
-        Ray temp_ray = new Ray(transform.position, -transform.up * RAYDISTANCE);
+        Ray temp_ray = new Ray(transform.position + transform.up, -transform.up * RAYDISTANCE);
 
         // Gets the normal of the surface below the character, and also creates a target direction for gravity
         if (Physics.Raycast(temp_ray, out temp_hit) && (temp_hit.transform.CompareTag("Moon") || temp_hit.transform.CompareTag("Platform")))

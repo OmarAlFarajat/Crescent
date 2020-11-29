@@ -65,9 +65,31 @@ public class InputHandler : MonoBehaviour
         // PLAYER CONTROLS
         if (playerController)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                playerController.Attack();
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift)){
+                playerController.animator.SetBool("isRunning", true);
+                playerController.isRunning = true;
+            }
+            else
+            {
+                playerController.animator.SetBool("isRunning", false);
+                playerController.isRunning = false;
+            }
+
             if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
             {
+                playerController.animator.SetBool("isMoving", true);
+                playerController.isMoving = true;
                 playerController.Move();
+            }
+            else
+            { 
+                playerController.animator.SetBool("isMoving", false);
+                playerController.isMoving = false;
             }
 
             if (Input.GetButtonDown("Jump")) 

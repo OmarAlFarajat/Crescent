@@ -13,8 +13,8 @@ public class MoonGravity : MonoBehaviour
     private Quaternion targetRotation;
 
     private const float GRAVITY = -20.0f;
-    private const float RAYDISTANCE = 1.0f;
-    private const float ROTATIONSPEED = 0.15f;
+    private const float RAYDISTANCE = 15f;
+    private const float ROTATIONSPEED = 0.075f;
 
     // When script initializes
     private void Awake()
@@ -32,6 +32,7 @@ public class MoonGravity : MonoBehaviour
         // Gets the normal of the surface below the character, and also creates a target direction for gravity
         if (Physics.Raycast(temp_ray, out temp_hit) && (temp_hit.transform.CompareTag("Moon") || temp_hit.transform.CompareTag("Platform")))
         {
+            //Debug.Log(temp_hit.transform.name);
             normal = temp_hit.normal;
             targetDirection = (transform.position - temp_hit.point).normalized;
         }

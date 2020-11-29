@@ -29,7 +29,8 @@ public class InputHandler : MonoBehaviour
 
     void Awake()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        playerController = GameObject.Find("Player_Space").GetComponent<PlayerController>();
 
         // MAIN MENU
         if(_MenuGroup)

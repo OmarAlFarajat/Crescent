@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rigidBody;
     public Animator animator;
+    private AudioManager audioManager; 
 
     [SerializeField]
     private float moveSpeed = 4f;
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float runMultiplier = 3f;
     [SerializeField]
     private float jumpForce = 12f;
+    [SerializeField]
+    private float attackForce = 12f;
 
     public bool isGrounded = false;
     public bool isMoving = false;
@@ -28,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -53,6 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isGrounded)
             {
+                audioManager.Play("Jump" + Random.Range(0, 4)); // Plays one of 4 random jumping sounds
                 rigidBody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
                 isGrounded = false;
                 animator.SetBool("isGrounded", false);
@@ -64,7 +69,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttacking)
         {
-            rigidBody.AddForce(transform.forward * jumpForce*0.5f, ForceMode.Impulse);
+            audioManager.Play("Attack" + Random.Range(0, 3)); // Plays one of 3 random attack sounds
+            rigidBody.AddForce(transform.forward * attackForce, ForceMode.Impulse);
             isAttacking = true;
             animator.SetBool("isAttacking", true);
             StartCoroutine("Wait");
@@ -120,6 +126,33 @@ public class PlayerController : MonoBehaviour
     {
 
         if (collision.gameObject.tag == "Platform")
+        {
+            currentMovingPlatform = null;
+            transform.parent = null;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.transform.CompareTag("Moon"))
+        {
+            animator.SetBool("isGrounded", true);
+            isGrounded = true;
+        }
+
+        if (collider.transform.CompareTag("Platform"))
+        {
+            animator.SetBool("isGrounded", true);
+            isGrounded = true;
+            currentMovingPlatform = collider.gameObject.transform;
+            transform.SetParent(currentMovingPlatform);
+        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+
+        if (collider.gameObject.tag == "Platform")
         {
             currentMovingPlatform = null;
             transform.parent = null;

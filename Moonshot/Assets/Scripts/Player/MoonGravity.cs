@@ -14,7 +14,10 @@ public class MoonGravity : MonoBehaviour
 
     private const float GRAVITY = -20.0f;
     private const float RAYDISTANCE = 15f;
-    private const float ROTATIONSPEED = 0.075f;
+    private const float ROTATIONSPEED = 0.03625f;
+
+    [SerializeField]
+    private string WhatDidIHit;
 
     // When script initializes
     private void Awake()
@@ -23,7 +26,7 @@ public class MoonGravity : MonoBehaviour
     }
 
     // Physics update
-    void FixedUpdate()
+    void Update()
     {
         // Set up ray to check the surface below player
         RaycastHit temp_hit;
@@ -32,7 +35,7 @@ public class MoonGravity : MonoBehaviour
         // Gets the normal of the surface below the character, and also creates a target direction for gravity
         if (Physics.Raycast(temp_ray, out temp_hit) && (temp_hit.transform.CompareTag("Moon") || temp_hit.transform.CompareTag("Platform")))
         {
-            //Debug.Log(temp_hit.transform.name);
+            WhatDidIHit = temp_hit.transform.name;
             normal = temp_hit.normal;
             targetDirection = (transform.position - temp_hit.point).normalized;
         }

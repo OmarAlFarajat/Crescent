@@ -33,20 +33,23 @@ public class AudioManager : MonoBehaviour
             effectsVolumeSlider.onValueChanged.AddListener(delegate { EffectsVolumeChange(); });
 
         // Set audio slider defaults or load up saved settings from PlayerPrefs
-        if (!PlayerPrefs.HasKey("MasterVolume"))
-            masterVolumeSlider.value = 1f;
-        else
-            masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        if (masterVolumeSlider && musicVolumeSlider && effectsVolumeSlider)
+        {
+            if (!PlayerPrefs.HasKey("MasterVolume"))
+                masterVolumeSlider.value = 1f;
+            else
+                masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
 
-        if (!PlayerPrefs.HasKey("MusicVolume"))
-            musicVolumeSlider.value = 0.5f;
-        else
-            musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+            if (!PlayerPrefs.HasKey("MusicVolume"))
+                musicVolumeSlider.value = 0.5f;
+            else
+                musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
 
-        if (!PlayerPrefs.HasKey("EffectsVolume"))
-            effectsVolumeSlider.value = 1f;
-        else
-            effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
+            if (!PlayerPrefs.HasKey("EffectsVolume"))
+                effectsVolumeSlider.value = 1f;
+            else
+                effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
+        }
 
     }
 
@@ -72,6 +75,14 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if(s != null)
             s.source.Stop();
+    }
+
+    public bool isPlaying(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+            return s.source.isPlaying;
+        return false;
     }
 
     // onValueChanged functions (NULL safe)

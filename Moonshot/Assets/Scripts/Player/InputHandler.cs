@@ -8,6 +8,8 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField]
     private PlayerController playerController;
+    [SerializeField]
+    private AudioManager audioManager;
 
     // MAIN MENU
     [SerializeField]
@@ -31,9 +33,10 @@ public class InputHandler : MonoBehaviour
     {
 
         playerController = GameObject.Find("Player_Space").GetComponent<PlayerController>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         // MAIN MENU
-        if(_MenuGroup)
+        if (_MenuGroup)
             _MenuGroup.SetActive(true);
 
         if(_CreditsGroup)
@@ -85,11 +88,38 @@ public class InputHandler : MonoBehaviour
                 playerController.animator.SetBool("isMoving", true);
                 playerController.isMoving = true;
                 playerController.Move();
+
+                // Stops Run sound (if playing) and plays Walk sound
+                if (!audioManager.isPlaying("Walk") && !playerController.isRunning)
+                {
+                    audioManager.Stop("Run");
+                    audioManager.Play("Walk");
+                }
+
+                // Stops Walk sound (if playing) and plays Run sound
+                if (!audioManager.isPlaying("Run") && playerController.isRunning)
+                {
+                    audioManager.Stop("Walk");
+                    audioManager.Play("Run");
+                }
+
+                // Stop Walk or Run sound if player is jumping/falling, or attacking
+                if (!playerController.isGrounded || playerController.isAttacking)
+                {
+                    audioManager.Stop("Walk");
+                    audioManager.Stop("Run");
+                }
             }
             else
             { 
                 playerController.animator.SetBool("isMoving", false);
                 playerController.isMoving = false;
+
+                if (audioManager.isPlaying("Walk"))
+                    audioManager.Stop("Walk");
+
+                if (audioManager.isPlaying("Run"))
+                    audioManager.Stop("Run");
             }
 
             if (Input.GetButtonDown("Jump")) 

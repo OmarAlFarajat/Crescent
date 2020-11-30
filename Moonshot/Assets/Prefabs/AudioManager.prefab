@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7079558582483036930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7079558582483036956}
+  - component: {fileID: 7079558582483036957}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7079558582483036956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079558582483036930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7079558582483036957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079558582483036930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcca39831e1876a4ca13d88815b3794a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Walk
+    clip: {fileID: 8300000, guid: d6d46390048e8184fbcf3293f49207a3, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Run
+    clip: {fileID: 8300000, guid: 6edec2478ca0e2e4e8c083a33dd90475, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump0
+    clip: {fileID: 8300000, guid: f753a24895d27284bafb1c7ab5f57641, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump1
+    clip: {fileID: 8300000, guid: 7bc67bf86a602c443a9ae717a41b5f19, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump2
+    clip: {fileID: 8300000, guid: 4e91fb62cbf24284f9fb4f0ee95152a5, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump3
+    clip: {fileID: 8300000, guid: 2edeeb0627971eb4db05499c869c437c, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Attack0
+    clip: {fileID: 8300000, guid: f45a4eebc15985649b2aba46f1bdad49, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Attack1
+    clip: {fileID: 8300000, guid: 552c2761c17ae1e468328179f36869ac, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Attack2
+    clip: {fileID: 8300000, guid: 95460102ba249a24bb7d7a05afe89c48, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
+  masterVolumeSlider: {fileID: 0}
+  musicVolumeSlider: {fileID: 0}
+  effectsVolumeSlider: {fileID: 0}

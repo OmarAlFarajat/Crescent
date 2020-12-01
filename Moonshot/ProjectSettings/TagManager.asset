@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Moon
   - Platform
+  - OutOfBounds
   layers:
   - Default
   - TransparentFX

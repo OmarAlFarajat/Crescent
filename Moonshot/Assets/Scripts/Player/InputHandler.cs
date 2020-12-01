@@ -18,6 +18,8 @@ public class InputHandler : MonoBehaviour
     private GameObject _CreditsGroup = null;
     [SerializeField]
     private GameObject _LoadingGroup = null;
+    [SerializeField]
+    private GameObject _MenuControlsGroup = null;
 
     // MAIN MENU / PAUSE MENU
     [SerializeField]
@@ -44,6 +46,9 @@ public class InputHandler : MonoBehaviour
 
         if(_CreditsGroup)
             _CreditsGroup.SetActive(false);
+
+        if (_MenuControlsGroup)
+            _MenuControlsGroup.SetActive(false);
 
         if (_LoadingGroup)
             _LoadingGroup.SetActive(false);
@@ -158,6 +163,9 @@ public class InputHandler : MonoBehaviour
             if (_MenuGroup && _CreditsGroup.activeSelf)
                 MenuCreditsBack();
 
+            if (_MenuGroup && _MenuControlsGroup.activeSelf)
+                MenuControlsBack();
+
             if ((_MenuGroup || _PauseMenuGroup) && _OptionsGroup.activeSelf)
                 OptionsBack();
         }
@@ -177,6 +185,18 @@ public class InputHandler : MonoBehaviour
     {
         _MenuGroup.SetActive(false);
         _CreditsGroup.SetActive(true);
+    }
+
+    public void MenuControls()
+    {
+        _MenuGroup.SetActive(false);
+        _MenuControlsGroup.SetActive(true);
+    }
+
+    public void MenuControlsBack()
+    {
+        _MenuGroup.SetActive(true);
+        _MenuControlsGroup.SetActive(false);
     }
 
     public void MenuCreditsBack()

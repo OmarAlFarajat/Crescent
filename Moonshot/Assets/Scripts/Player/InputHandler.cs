@@ -174,6 +174,7 @@ public class InputHandler : MonoBehaviour
     // MAIN MENU
     public void MenuStart()
     {
+        audioManager.Play("Button");
         _MenuGroup.SetActive(false);
         _LoadingGroup.SetActive(true);
         // TO-DO:
@@ -183,24 +184,28 @@ public class InputHandler : MonoBehaviour
 
     public void MenuCredits()
     {
+        audioManager.Play("Button");
         _MenuGroup.SetActive(false);
         _CreditsGroup.SetActive(true);
     }
 
     public void MenuControls()
     {
+        audioManager.Play("Button");
         _MenuGroup.SetActive(false);
         _MenuControlsGroup.SetActive(true);
     }
 
     public void MenuControlsBack()
     {
+        audioManager.Play("Button");
         _MenuGroup.SetActive(true);
         _MenuControlsGroup.SetActive(false);
     }
 
     public void MenuCreditsBack()
     {
+        audioManager.Play("Button");
         _MenuGroup.SetActive(true);
         _CreditsGroup.SetActive(false);
     }
@@ -208,6 +213,7 @@ public class InputHandler : MonoBehaviour
     // MAIN/PAUSE MENU
     public void MenuExit()
     {
+        audioManager.Play("Button");
         Application.Quit();
     }
 
@@ -215,6 +221,7 @@ public class InputHandler : MonoBehaviour
     {
         if (_MenuGroup)
         {
+            audioManager.Play("Button");
             _MenuGroup.SetActive(false);
             _OptionsGroup.SetActive(true);
         }
@@ -229,6 +236,7 @@ public class InputHandler : MonoBehaviour
     {
         if (_MenuGroup)
         {
+            audioManager.Play("Button");
             _MenuGroup.SetActive(true);
             _OptionsGroup.SetActive(false);
         }

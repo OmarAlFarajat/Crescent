@@ -26,8 +26,8 @@ public class AudioManager : MonoBehaviour
         if (masterVolumeSlider)
             masterVolumeSlider.onValueChanged.AddListener(delegate { MasterVolumeChange(); });
        
-        if (masterVolumeSlider)
-            masterVolumeSlider.onValueChanged.AddListener(delegate { MusicVolumeChange(); });
+        if (musicVolumeSlider)
+            musicVolumeSlider.onValueChanged.AddListener(delegate { MusicVolumeChange(); });
         
         if (effectsVolumeSlider)
             effectsVolumeSlider.onValueChanged.AddListener(delegate { EffectsVolumeChange(); });
@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
             else
                 effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
         }
-
+        Play("Music");
     }
 
     // Plays the sound source itself. Repeated calls will reset the sound being played.

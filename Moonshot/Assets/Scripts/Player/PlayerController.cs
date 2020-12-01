@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-        if (!isAttacking)
+        if (!isAttacking && Time.timeScale > 0)
         {
             audioManager.Play("Attack" + Random.Range(0, 3)); // Plays one of 3 random attack sounds
             rigidBody.AddForce(transform.forward * attackForce, ForceMode.Impulse);
@@ -89,27 +89,30 @@ public class PlayerController : MonoBehaviour
 
     private void MouseLook()
     {
-        // http://answers.unity.com/answers/1401934/view.html
-        float X = Input.GetAxis("Mouse X") * 2f;
-        float Y = Input.GetAxis("Mouse Y") * 2f;
-
-        transform.Rotate(0, X, 0); // Player rotates on Y axis, your Cam is child, then rotates too
-
-
-        // To scurity check to not rotate 360º 
-        if (Camera.main.transform.eulerAngles.x + (-Y) > 80 && Camera.main.transform.eulerAngles.x + (-Y) < 280)
+        if (Time.timeScale > 0)
         {
+            // http://answers.unity.com/answers/1401934/view.html
+            float X = Input.GetAxis("Mouse X") * 2f;
+            float Y = Input.GetAxis("Mouse Y") * 2f;
 
-        }
-        else
-        {
-            Camera.main.transform.RotateAround(transform.position, Camera.main.transform.right, -Y);
+            transform.Rotate(0, X, 0); // Player rotates on Y axis, your Cam is child, then rotates too
+
+
+            // To scurity check to not rotate 360º 
+            if (Camera.main.transform.eulerAngles.x + (-Y) > 80 && Camera.main.transform.eulerAngles.x + (-Y) < 280)
+            {
+
+            }
+            else
+            {
+                Camera.main.transform.RotateAround(transform.position, Camera.main.transform.right, -Y);
+            }
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Moon"))
+        if (collision.transform.CompareTag("Moon") || collision.transform.CompareTag("Ground"))
         {
             animator.SetBool("isGrounded", true);
             isGrounded = true;

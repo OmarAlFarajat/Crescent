@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - OutOfBounds
   - Star
+  - Ground
   layers:
   - Default
   - TransparentFX

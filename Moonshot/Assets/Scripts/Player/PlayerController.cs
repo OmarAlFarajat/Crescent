@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float attackForce = 12f;
 
+    public bool GotStar { get; set; }
+
     public bool isGrounded = false;
     public bool isMoving = false;
     public bool isRunning = false;
@@ -119,6 +121,12 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             currentMovingPlatform = collision.gameObject.transform;
             transform.SetParent(currentMovingPlatform);
+        }
+
+        if (collision.gameObject.tag == "Star")
+        {
+            GotStar = true;
+            Destroy(collision.gameObject);
         }
     }
 

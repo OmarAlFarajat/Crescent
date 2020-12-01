@@ -2108,6 +2108,7 @@ GameObject:
   - component: {fileID: 2880500168800473199}
   - component: {fileID: 2916900494409515689}
   - component: {fileID: 4016415091210795625}
+  - component: {fileID: 166756004993427986}
   m_Layer: 0
   m_Name: pHelix1
   m_TagString: Untagged
@@ -2176,6 +2177,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &166756004993427986
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654717580320556376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8443825647018872803, guid: 5876d3db2e096524d8efd4f3abd5387c, type: 3}
 --- !u!1 &6349398333197903871
 GameObject:
   m_ObjectHideFlags: 0

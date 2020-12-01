@@ -11,6 +11,20 @@ public class UIController : MonoBehaviour
     public int levelMaxStars;
     public PlayerController player;
 
+    [SerializeField]
+    private GameObject _StoryGroup = null;
+    [SerializeField]
+    private GameObject _EndBackground = null;
+
+    private void Start()
+    {
+        if (_StoryGroup)
+            _StoryGroup.SetActive(false);
+
+        if (_EndBackground)
+            _EndBackground.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -27,5 +41,17 @@ public class UIController : MonoBehaviour
         }
 
         textStarCounter.text = starCounter.ToString() + "/" + levelMaxStars.ToString();
+
+        // End Scene
+        if(starCounter >= levelMaxStars)
+        {
+            Cursor.visible = true;
+
+            if (_EndBackground)
+                _EndBackground.SetActive(true);
+
+            _StoryGroup.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 }

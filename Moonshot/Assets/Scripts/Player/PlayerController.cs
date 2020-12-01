@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f; 
         rigidBody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        if (!isAttacking)
+        if (!isAttacking && Time.timeScale > 0)
         {
             Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
@@ -55,9 +56,9 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump()
     {
-        if (!isAttacking)
+        if (!isAttacking && Time.timeScale > 0)
         {
-            if (isGrounded)
+            if (isGrounded && Time.timeScale > 0)
             {
                 audioManager.Play("Jump" + Random.Range(0, 4)); // Plays one of 4 random jumping sounds
                 rigidBody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
@@ -128,6 +129,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Star")
         {
+            audioManager.Play("Star");
             GotStar = true;
             Destroy(collision.gameObject);
         }
@@ -137,33 +139,6 @@ public class PlayerController : MonoBehaviour
     {
 
         if (collision.gameObject.tag == "Platform")
-        {
-            currentMovingPlatform = null;
-            transform.parent = null;
-        }
-    }
-
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.transform.CompareTag("Moon"))
-        {
-            animator.SetBool("isGrounded", true);
-            isGrounded = true;
-        }
-
-        if (collider.transform.CompareTag("Platform"))
-        {
-            animator.SetBool("isGrounded", true);
-            isGrounded = true;
-            currentMovingPlatform = collider.gameObject.transform;
-            transform.SetParent(currentMovingPlatform);
-        }
-    }
-
-    private void OnTriggerExit(Collider collider)
-    {
-
-        if (collider.gameObject.tag == "Platform")
         {
             currentMovingPlatform = null;
             transform.parent = null;

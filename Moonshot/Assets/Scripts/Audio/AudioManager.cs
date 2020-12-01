@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1.0f; 
+
         // Initialize audio sources
         foreach (Sound s in sounds)
         {
@@ -41,7 +43,7 @@ public class AudioManager : MonoBehaviour
                 masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
 
             if (!PlayerPrefs.HasKey("MusicVolume"))
-                musicVolumeSlider.value = 0.5f;
+                musicVolumeSlider.value = 0.325f;
             else
                 musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
 
@@ -120,5 +122,6 @@ public class AudioManager : MonoBehaviour
             if(s.soundType == Sound.SoundType.Effect)
                 s.source.volume = masterVolumeSlider.value * effectsVolumeSlider.value;
         }
+        Play("Star");
     }
 }

@@ -12,8 +12,8 @@ public class MoonGravity : MonoBehaviour
     private Vector3 targetDirection;
     private Quaternion targetRotation;
 
-    private const float GRAVITY = -20.0f;
-    private const float RAYDISTANCE = 15f;
+    private const float GRAVITY = -30.0f;
+    private const float RAYDISTANCE = 20f;
     private const float ROTATIONSPEED = 0.03625f;
 
     [SerializeField]

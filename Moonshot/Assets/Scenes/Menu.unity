@@ -827,7 +827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &323122045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3049,7 +3049,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "WASD \t\t\u2014 Movement\nLeft Shift \t\u2014 Run\nSpace \t\t\u2014 Jump\nMouse
-    \t\t\u2014 Look / Turn\nLeft-Click \t\u2014 Twirl (for fun)\nEscape \t\t\u2014
+    \t\t\u2014 Look / Turn\nLeft-Click \t\u2014 Twirl (for fun)\nEscape\t\t\u2014
     Pause / In-Game Menu"
 --- !u!222 &1098293277
 CanvasRenderer:
@@ -5180,6 +5180,12 @@ MonoBehaviour:
     soundType: 1
     loop: 0
     source: {fileID: 0}
+  - name: Star
+    clip: {fileID: 8300000, guid: c90c01d8718d0754e8e2c9117ce231d7, type: 3}
+    volume: 1
+    soundType: 1
+    loop: 0
+    source: {fileID: 0}
   masterVolumeSlider: {fileID: 2936585028474422235}
   musicVolumeSlider: {fileID: 2936585027298441899}
   effectsVolumeSlider: {fileID: 2936585028493403444}
@@ -5722,7 +5728,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "WASD \t\t\u2014 Movement\nLeft Shift \t\u2014 Run\nSpace \t\t\u2014 Jump\nMouse
-    \t\t\u2014 Look / Turn\nLeft-Click \t\u2014 Twirl (for fun)\nEscape \t\t\u2014
+    \t\t\u2014 Look / Turn\nLeft-Click \t\u2014 Twirl (for fun)\nEscape\t\t\u2014
     Pause / In-Game Menu"
 --- !u!222 &1633199351
 CanvasRenderer:

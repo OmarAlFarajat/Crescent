@@ -20,6 +20,10 @@ public class CameraCollision_1 : MonoBehaviour
 	// Use this for initialization
 	void Awake()
 	{
+		// Cursor stuff
+		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.visible = false;
+
 		dollyDir = transform.localPosition.normalized;
 		distance = transform.localPosition.magnitude;
 	}

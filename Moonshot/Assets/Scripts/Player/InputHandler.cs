@@ -81,12 +81,13 @@ public class InputHandler : MonoBehaviour
         // PLAYER CONTROLS
         if (playerController)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1) && Time.timeScale > 0)
             {
                 playerController.Attack();
             }
 
-            if (Input.GetKey(KeyCode.LeftShift)){
+            if (Input.GetKey(KeyCode.LeftShift) && Time.timeScale > 0)
+            {
                 playerController.animator.SetBool("isRunning", true);
                 playerController.isRunning = true;
             }
@@ -96,7 +97,7 @@ public class InputHandler : MonoBehaviour
                 playerController.isRunning = false;
             }
 
-            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && Time.timeScale > 0)
             {
                 playerController.animator.SetBool("isMoving", true);
                 playerController.isMoving = true;
@@ -135,7 +136,7 @@ public class InputHandler : MonoBehaviour
                     audioManager.Stop("Run");
             }
 
-            if (Input.GetButtonDown("Jump")) 
+            if (Input.GetButtonDown("Jump") && Time.timeScale > 0) 
             {
                 playerController.Jump();
             }
@@ -145,6 +146,7 @@ public class InputHandler : MonoBehaviour
             {
                 if (!_PauseMenuGroup.activeSelf && !_ControlsGroup.activeSelf)
                 {
+                    Cursor.visible = true;
                     _PauseMenuGroup.SetActive(true);
                     Time.timeScale = 0f;
                 }
@@ -283,8 +285,19 @@ public class InputHandler : MonoBehaviour
 
     public void PauseContinue()
     {
+        Cursor.visible = false;
         _PauseMenuGroup.SetActive(false);
         Time.timeScale = 1f;
+        // HACK
+        //playerController.Jump();
         AudioListener.pause = false;
+    }
+
+    // STORY
+    public void GoToMoon()
+    {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+        SceneManager.LoadScene("Moon");
     }
 }

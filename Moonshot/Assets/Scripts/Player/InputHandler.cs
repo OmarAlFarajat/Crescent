@@ -20,6 +20,8 @@ public class InputHandler : MonoBehaviour
     private GameObject _LoadingGroup = null;
     [SerializeField]
     private GameObject _MenuControlsGroup = null;
+    [SerializeField]
+    private GameObject _StoryGroup = null;
 
     // MAIN MENU / PAUSE MENU
     [SerializeField]
@@ -52,6 +54,9 @@ public class InputHandler : MonoBehaviour
 
         if (_LoadingGroup)
             _LoadingGroup.SetActive(false);
+
+        if (_StoryGroup)
+            _StoryGroup.SetActive(false);
 
         // MAIN/PAUSE MENU
         if (_OptionsGroup)
@@ -176,9 +181,18 @@ public class InputHandler : MonoBehaviour
     {
         audioManager.Play("Button");
         _MenuGroup.SetActive(false);
-        _LoadingGroup.SetActive(true);
+        _StoryGroup.SetActive(true);
         // TO-DO:
         //SceneManager.LoadScene("Main Scene");
+        //SceneManager.LoadScene("Omar");
+    }
+
+    public void MenuStartContinue()
+    {
+        audioManager.Play("Button");
+        _StoryGroup.SetActive(false);
+        _LoadingGroup.SetActive(true);
+        SceneManager.LoadScene("Earth");
         //SceneManager.LoadScene("Omar");
     }
 
@@ -252,8 +266,7 @@ public class InputHandler : MonoBehaviour
     {
         Time.timeScale = 1f;
         AudioListener.pause = false;
-        // TO-DO:
-        //SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Menu");
     }
 
     public void PauseControls()

@@ -31,8 +31,11 @@ public class InputHandler : MonoBehaviour
 
     void Awake()
     {
+        GameObject temp_player = GameObject.Find("Player");
 
-        playerController = GameObject.Find("Player_Space").GetComponent<PlayerController>();
+        if(temp_player)
+            playerController = temp_player.GetComponent<PlayerController>();
+
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         // MAIN MENU
@@ -127,17 +130,6 @@ public class InputHandler : MonoBehaviour
                 playerController.Jump();
             }
 
-            // MAIN MENU
-            if (Input.GetKeyDown("escape"))
-            {
-
-                if (_MenuGroup && _CreditsGroup.activeSelf)
-                    MenuCreditsBack();
-
-                if ((_MenuGroup || _PauseMenuGroup) && _OptionsGroup.activeSelf)
-                    OptionsBack();
-            }
-
             // PAUSE MENU
             if (Input.GetKeyDown("escape") && _PauseMenuGroup)
             {
@@ -157,6 +149,17 @@ public class InputHandler : MonoBehaviour
                     PauseContinue();
                 }
             }
+        }
+
+        // MAIN MENU
+        if (Input.GetKeyDown("escape"))
+        {
+
+            if (_MenuGroup && _CreditsGroup.activeSelf)
+                MenuCreditsBack();
+
+            if ((_MenuGroup || _PauseMenuGroup) && _OptionsGroup.activeSelf)
+                OptionsBack();
         }
     }
 

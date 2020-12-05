@@ -4,7 +4,7 @@
 **Download and Play:** https://iforgethowtoread.itch.io/crescent
 
 ## Introduction
-Developed by our team "Gargantua Games" and submitted for GitHub Game Off 2020](https://itch.io/jam/game-off-2020). The theme of the game jam was "Moonshot". 
+Developed by our team "Gargantua Games" and submitted for [GitHub Game Off 2020](https://itch.io/jam/game-off-2020). The theme of the game jam was "Moonshot". 
 
 ## Description
 - **There are two levels.** The Earth stage and the Moon stage. Each stage has its own area to explore.

@@ -1,5 +1,5 @@
 # Crescent (GitHub Game Off 2020)
-<img src=https://img.itch.zone/aW1hZ2UvODM2NDkwLzQ3MTAwMjcucG5n/original/TZPcyy.png width="320" height="214"/> <img src=https://img.itch.zone/aW1hZ2UvODM2NDkwLzQ3MDk5MjUucG5n/original/zPuMZY.png width="320" height="214"/> <https://img.itch.zone/aW1hZ2UvODM2NDkwLzQ3MDk5MjQucG5n/original/PHEE8r.png width="320" height="214"/> <https://img.itch.zone/aW1hZ2UvODM2NDkwLzQ3MDk5MjYucG5n/original/%2BAVg72.png width="320" height="214"/>  
+<img src=https://img.itch.zone/aW1hZ2UvODM2NDkwLzQ3MTAwMjcucG5n/original/TZPcyy.png width="320" height="214"/> <img src=https://img.itch.zone/aW1hZ2UvODM2NDkwLzQ3MDk5MjUucG5n/original/zPuMZY.png width="320" height="214"/> <img src=https://img.itch.zone/aW1hZ2UvODM2NDkwLzQ3MDk5MjQucG5n/original/PHEE8r.png width="320" height="214"/> <img src=https://img.itch.zone/aW1hZ2UvODM2NDkwLzQ3MDk5MjYucG5n/original/%2BAVg72.png width="320" height="214"/>  
 
 **Download and Play:** https://iforgethowtoread.itch.io/crescent
 
